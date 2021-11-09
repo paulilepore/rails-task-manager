@@ -1,0 +1,17 @@
+<h1><%= @task.title.capitalize %></h1>
+
+<h2>Details :</h2>
+<%= @task.details.capitalize %>
+
+<h2>Completed :
+<% if @task.completed %>
+        ☑️
+      <% else %>
+        ⬜
+      <% end %></h2>
+<br>
+<%= link_to("Edit", edit_task_path(@task) ) %>
+<%= link_to("Delete", edit_task_path(@task) ) %>
+<br>
+<br>
+<%= link_to("Return to all tasks", tasks_path) %>
