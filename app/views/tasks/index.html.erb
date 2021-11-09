@@ -1,18 +1,21 @@
-<h1>All Tasks</h1>
+<div class="navbar">
+  <h1>All Tasks</h1>
+  <%= link_to("🆕", new_task_path, id: "new") %>
+</div>
+<div class="container">
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <% if task.completed %>
+          ☑️
+        <% else %>
+          ⬜
+        <% end %>
+        <%= link_to(task.title.capitalize, task_path(task), class:"titles") %>
+        <%= link_to("🖊️", edit_task_path(task)) %>
+        <%= link_to("🗑️", task_path(task), method: "delete", data: { confirm: "Are you sure?"}) %>
+      </li>
+    <% end %>
+  </ul>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= link_to(task.title.capitalize, task_path(task)) %>
-      <% if task.completed %>
-        ☑️
-      <% else %>
-        ⬜
-      <% end %>
-      <%= link_to("🗑", task_path(task), method: "delete", data: { confirm: "Are you sure?"}) %>
-      <%# <%= link_to("🗑", task_path(task), method: "delete", data: { confirm: "Are you sure?"}) %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to("Create a new task", tasks_new_path) %>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <%= simple_form_for(@task) do |f| %>
+    <%= f.input :title %>
+
+    <%= f.input :details %>
+    <% unless @task.new_record? %>
+      <%= f.input :completed %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+  <br>
+  <%= link_to("🔙", tasks_path, id:"back") %>
+</div>
